@@ -29,10 +29,10 @@ export default function Home() {
   ];
 
   const stats = [
-    { label: 'Projects Delivered', value: '100+' },
-    { label: 'Happy Clients', value: '50+' },
-    { label: 'Team Members', value: '25+' },
-    { label: 'Countries Served', value: '10+' },
+    { label: 'Projects Delivered', value: '5+' },
+    { label: 'Happy Clients', value: '13+' },
+    { label: 'Team Members', value: '6+' },
+    { label: 'Countries Served', value: '3+' },
   ];
 
   return (
