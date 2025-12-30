@@ -19,7 +19,7 @@ export default function ContactPage() {
     {
       icon: '📱',
       title: 'Phone',
-      details: '+237 XXX XXX XXX',
+      details: '+237 654 160 856',
       link: 'tel:+237654160856',
     },
     {
@@ -135,21 +135,21 @@ export default function ContactPage() {
               <div className="bg-white dark:bg-gray-800 p-6 rounded-lg">
                 <div className="text-3xl mb-2">⚡</div>
                 <div className="text-2xl font-bold text-primary-600 dark:text-primary-400 mb-1">
-                  24 Hours
+                  4 Hours
                 </div>
                 <div className="text-gray-600 dark:text-gray-400">Average Response Time</div>
               </div>
               <div className="bg-white dark:bg-gray-800 p-6 rounded-lg">
                 <div className="text-3xl mb-2">🌍</div>
                 <div className="text-2xl font-bold text-primary-600 dark:text-primary-400 mb-1">
-                  10+ Countries
+                  3+ Countries
                 </div>
                 <div className="text-gray-600 dark:text-gray-400">We Serve</div>
               </div>
               <div className="bg-white dark:bg-gray-800 p-6 rounded-lg">
                 <div className="text-3xl mb-2">💬</div>
                 <div className="text-2xl font-bold text-primary-600 dark:text-primary-400 mb-1">
-                  5 Languages
+                  3 Languages
                 </div>
                 <div className="text-gray-600 dark:text-gray-400">Support Available</div>
               </div>
