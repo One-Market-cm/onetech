@@ -12,6 +12,10 @@ export const metadata: Metadata = {
   description: "One Tech is the technology and development arm of One Market, delivering cutting-edge software solutions, training, and digital transformation services across Africa.",
   keywords: ["One Tech", "One Market", "Software Development", "Technology", "Training", "Digital Transformation", "Africa"],
   authors: [{ name: "One Tech" }],
+  icons: {
+    icon: '/favicon.ico',
+    apple: '/apple-icon.png',
+  },
   openGraph: {
     type: "website",
     locale: "en_US",
