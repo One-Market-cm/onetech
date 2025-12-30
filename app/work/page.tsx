@@ -13,55 +13,55 @@ export default function WorkPage() {
   const projects = [
     {
       id: 'ecommerce-platform',
-      title: 'E-Commerce Platform',
-      category: 'Web Development',
-      description: 'A scalable e-commerce platform serving thousands of users across Africa with real-time inventory management.',
+      title: 'One Market Mobile App',
+      category: 'Mobile Development',
+      description: 'A scalable e-commerce platform serving users across Africa with real-time inventory management.',
       image: '🛒',
-      tags: ['Next.js', 'Node.js', 'PostgreSQL', 'AWS'],
+      tags: ['React Native', 'Typescript', 'PostgreSQL', 'Django'],
     },
     {
       id: 'mobile-banking-app',
-      title: 'Mobile Banking App',
-      category: 'Mobile Development',
-      description: 'Secure mobile banking application with biometric authentication and real-time transaction processing.',
-      image: '💳',
-      tags: ['React Native', 'TypeScript', 'Firebase', 'Security'],
+      title: 'One Market Website',
+      category: 'Web Development',
+      description: 'Website for One Market, which is an African e-commerce platform',
+      image: '🌐',
+      tags: ['Node.js', 'TypeScript', 'Email Intergration', 'Security'],
     },
     {
       id: 'supply-chain-system',
-      title: 'Supply Chain Management',
-      category: 'Enterprise Solution',
-      description: 'End-to-end supply chain management system improving logistics efficiency by 40%.',
+      title: 'Cargo Link Mobile App',
+      category: 'Mobile Development',
+      description: 'End-to-end supply chain management system improving logistics efficiency by 40% across Africa and China.',
       image: '📦',
       tags: ['React', 'Python', 'MongoDB', 'Docker'],
     },
     {
-      id: 'learning-platform',
-      title: 'Online Learning Platform',
-      category: 'Education Technology',
-      description: 'Comprehensive learning management system with video streaming and interactive assessments.',
-      image: '📚',
-      tags: ['Next.js', 'GraphQL', 'PostgreSQL', 'Stripe'],
+      id: 'exchange-platform',
+      title: 'Tradepoint Exchange Website',
+      category: 'Web Development',
+      description: 'Website for a fantasy football stocks trading app.',
+      image: '📈',
+      tags: ['Next.js', 'UI/UX', 'Design', 'Typescript'],
     },
     {
-      id: 'healthcare-portal',
-      title: 'Healthcare Portal',
-      category: 'Healthcare',
-      description: 'Patient management portal with appointment scheduling, telemedicine, and medical records.',
-      image: '🏥',
-      tags: ['React', 'Node.js', 'MySQL', 'WebRTC'],
+      id: 'exchnage-platform-ui',
+      title: 'TradePoint Mobile App UI',
+      category: 'UI/UX Design',
+      description: 'UI for the mobile app of a fantasy football stocks trading app.',
+      image: '📱',
+      tags: ['Figma', 'Balsamique', 'Design', 'UI/UX'],
     },
-    {
+    /*{
       id: 'fintech-dashboard',
       title: 'FinTech Analytics Dashboard',
       category: 'Financial Technology',
       description: 'Real-time analytics dashboard for financial data visualization and reporting.',
       image: '📊',
       tags: ['React', 'D3.js', 'Python', 'Redis'],
-    },
+    },*/
   ];
 
-  const categories = ['All', 'Web Development', 'Mobile Development', 'Enterprise Solution', 'Education Technology', 'Healthcare', 'Financial Technology'];
+  const categories = ['All', 'Web Development', 'Mobile Development', 'Enterprise Solution', 'Education Technology', 'Healthcare', 'UIUX Design'];
 
   return (
     <>
