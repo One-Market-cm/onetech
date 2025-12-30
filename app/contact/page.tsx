@@ -20,25 +20,20 @@ export default function ContactPage() {
       icon: '📱',
       title: 'Phone',
       details: '+237 XXX XXX XXX',
-      link: 'tel:+237XXXXXXXXX',
+      link: 'tel:+237654160856',
     },
     {
       icon: '📍',
       title: 'Location',
-      details: 'Cameroon, Central Africa',
+      details: 'Cameroon, Douala',
       link: null,
     },
   ];
 
   const offices = [
     {
-      city: 'Yaoundé',
-      address: 'Main Office',
-      country: 'Cameroon',
-    },
-    {
       city: 'Douala',
-      address: 'Regional Office',
+      address: 'Makepe',
       country: 'Cameroon',
     },
   ];
