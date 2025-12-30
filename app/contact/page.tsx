@@ -25,7 +25,7 @@ export default function ContactPage() {
     {
       icon: '📍',
       title: 'Location',
-      details: 'Cameroon, Douala',
+      details: 'Cameroon, Douala - Makepe',
       link: null,
     },
   ];
@@ -128,7 +128,7 @@ export default function ContactPage() {
               Quick Response Time
             </h2>
             <p className="text-lg text-gray-600 dark:text-gray-400 mb-8">
-              We typically respond to all inquiries within 24 hours during business days. 
+              We typically respond to all inquiries within 4 to 24 hours during business days. 
               For urgent matters, please call us directly.
             </p>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
