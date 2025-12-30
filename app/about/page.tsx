@@ -156,19 +156,19 @@ export default function AboutPage() {
           />
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-12">
             <div className="text-center">
-              <div className="text-4xl md:text-5xl font-bold mb-2">100+</div>
+              <div className="text-4xl md:text-5xl font-bold mb-2">5+</div>
               <div className="text-primary-100">Projects Completed</div>
             </div>
             <div className="text-center">
-              <div className="text-4xl md:text-5xl font-bold mb-2">50+</div>
+              <div className="text-4xl md:text-5xl font-bold mb-2">13+</div>
               <div className="text-primary-100">Happy Clients</div>
             </div>
             <div className="text-center">
-              <div className="text-4xl md:text-5xl font-bold mb-2">25+</div>
+              <div className="text-4xl md:text-5xl font-bold mb-2">6+</div>
               <div className="text-primary-100">Team Members</div>
             </div>
             <div className="text-center">
-              <div className="text-4xl md:text-5xl font-bold mb-2">10+</div>
+              <div className="text-4xl md:text-5xl font-bold mb-2">3+</div>
               <div className="text-primary-100">Countries Served</div>
             </div>
           </div>
