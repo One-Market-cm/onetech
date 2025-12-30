@@ -125,25 +125,25 @@ export default function WorkPage() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             <div className="text-center">
               <div className="text-4xl md:text-5xl font-bold text-primary-600 dark:text-primary-400 mb-2">
-                100+
+                5+
               </div>
               <div className="text-gray-600 dark:text-gray-400">Projects Delivered</div>
             </div>
             <div className="text-center">
               <div className="text-4xl md:text-5xl font-bold text-primary-600 dark:text-primary-400 mb-2">
-                50+
+                13+
               </div>
               <div className="text-gray-600 dark:text-gray-400">Happy Clients</div>
             </div>
             <div className="text-center">
               <div className="text-4xl md:text-5xl font-bold text-primary-600 dark:text-primary-400 mb-2">
-                95%
+                93%
               </div>
               <div className="text-gray-600 dark:text-gray-400">Client Satisfaction</div>
             </div>
             <div className="text-center">
               <div className="text-4xl md:text-5xl font-bold text-primary-600 dark:text-primary-400 mb-2">
-                10+
+                3+
               </div>
               <div className="text-gray-600 dark:text-gray-400">Countries Served</div>
             </div>
