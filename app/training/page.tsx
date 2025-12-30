@@ -26,7 +26,7 @@ export default function TrainingPage() {
       description: 'Learn to build native and cross-platform mobile applications using React Native and modern development tools.',
       topics: ['React Native', 'Mobile UI/UX', 'API Integration', 'State Management', 'App Deployment', 'Performance Optimization'],
     },
-    {
+    /*{
       title: 'Cloud Architecture',
       duration: '8 weeks',
       level: 'Advanced',
@@ -39,7 +39,7 @@ export default function TrainingPage() {
       level: 'Beginner to Intermediate',
       description: 'Dive into data analysis, visualization, and machine learning with Python and industry-standard tools.',
       topics: ['Python Programming', 'Data Analysis with Pandas', 'Data Visualization', 'Machine Learning Basics', 'SQL for Analytics', 'Statistical Analysis'],
-    },
+    },*/
     {
       title: 'UI/UX Design',
       duration: '8 weeks',
@@ -47,13 +47,13 @@ export default function TrainingPage() {
       description: 'Learn user-centered design principles and create beautiful, functional interfaces using modern design tools.',
       topics: ['Design Thinking', 'Figma & Design Tools', 'User Research', 'Wireframing & Prototyping', 'Visual Design', 'Usability Testing'],
     },
-    {
+    /*{
       title: 'DevOps Engineering',
       duration: '10 weeks',
       level: 'Intermediate to Advanced',
       description: 'Build expertise in DevOps practices, automation, and continuous delivery for modern software development.',
       topics: ['Git & Version Control', 'CI/CD with Jenkins/GitHub Actions', 'Docker & Kubernetes', 'Terraform', 'Monitoring with Prometheus', 'Security Best Practices'],
-    },
+    },*/
   ];
 
   const benefits = [
