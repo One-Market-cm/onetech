@@ -144,8 +144,8 @@ export default function TermsPage() {
               If you have any questions about these Terms of Service, please contact us at:
             </p>
             <ul>
-              <li>Email: hello@onetech.cm</li>
-              <li>Phone: +237 XXX XXX XXX</li>
+              <li>Email: tech@onemarketc.com/li>
+              <li>Phone: +237 654 160 856</li>
             </ul>
           </div>
         </Container>
