@@ -36,7 +36,7 @@ export function ContactForm() {
       // Provide a user-friendly error message without exposing internal details
       setMessage({ 
         type: 'error', 
-        text: 'Unable to submit the form. Please check your internet connection and try again.' 
+        text: 'Unable to submit the form. Please try again later.' 
       });
     } finally {
       setIsSubmitting(false);

@@ -104,16 +104,27 @@ Timestamp: ${timestamp}
 
     if (error) {
       console.error('[Contact Form] Resend API error occurred');
-      console.error('[Contact Form] Error type:', error.name);
-      console.error('[Contact Form] Error message:', error.message);
       
-      // Only format error details in development to avoid unnecessary processing
-      if (isDevelopment) {
-        console.error('[Contact Form] Full error details:', JSON.stringify(error, null, 2));
+      // Safely access error properties
+      if (typeof error === 'object' && error !== null) {
+        if ('name' in error) {
+          console.error('[Contact Form] Error type:', error.name);
+        }
+        if ('message' in error) {
+          console.error('[Contact Form] Error message:', error.message);
+        }
+        
+        // Only format error details in development to avoid unnecessary processing
+        if (isDevelopment) {
+          console.error('[Contact Form] Full error details:', JSON.stringify(error, null, 2));
+        }
       }
       
       // Provide more specific error message in development
-      const errorDetails = isDevelopment ? ` (${error.message})` : '';
+      const errorMessage = typeof error === 'object' && error !== null && 'message' in error 
+        ? String(error.message) 
+        : 'Unknown error';
+      const errorDetails = isDevelopment ? ` (${errorMessage})` : '';
       
       return {
         success: false,
