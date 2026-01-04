@@ -30,7 +30,8 @@ export async function submitContactForm(formData: FormData) {
   // Check if API key is configured
   const apiKey = process.env.RESEND_API_KEY;
   if (!apiKey) {
-    console.error('RESEND_API_KEY is not configured');
+    console.error('[Contact Form] RESEND_API_KEY environment variable is not configured');
+    console.error('[Contact Form] Please set RESEND_API_KEY in your environment variables');
     return {
       success: false,
       error: 'Email service is not configured. Please contact us directly at tech@onemarketc.com',
@@ -99,24 +100,41 @@ Timestamp: ${timestamp}
     });
 
     if (error) {
-      console.error('Error sending email:', error);
+      console.error('[Contact Form] Resend API error occurred');
+      console.error('[Contact Form] Error type:', error.name);
+      console.error('[Contact Form] Error message:', error.message);
+      console.error('[Contact Form] Full error details:', JSON.stringify(error, null, 2));
+      
+      // Provide more specific error message in development
+      const isDevelopment = process.env.NODE_ENV === 'development';
+      const errorDetails = isDevelopment ? ` (${error.message})` : '';
+      
       return {
         success: false,
-        error: 'Failed to send message. Please try again or contact us directly at tech@onemarketc.com',
+        error: `Failed to send message${errorDetails}. Please try again or contact us directly at tech@onemarketc.com`,
       };
     }
 
-    console.log('Email sent successfully:', data);
+    console.log('[Contact Form] Email sent successfully');
+    console.log('[Contact Form] Email ID:', data?.id);
 
     return {
       success: true,
       message: 'Thank you for contacting us! We will get back to you within 24 hours.',
     };
   } catch (error) {
-    console.error('Unexpected error sending email:', error);
+    console.error('[Contact Form] Unexpected error occurred while sending email');
+    console.error('[Contact Form] Error type:', error instanceof Error ? error.constructor.name : typeof error);
+    console.error('[Contact Form] Error message:', error instanceof Error ? error.message : String(error));
+    console.error('[Contact Form] Stack trace:', error instanceof Error ? error.stack : 'N/A');
+    
+    // Provide more specific error message in development
+    const isDevelopment = process.env.NODE_ENV === 'development';
+    const errorDetails = isDevelopment && error instanceof Error ? ` (${error.message})` : '';
+    
     return {
       success: false,
-      error: 'An unexpected error occurred. Please try again later or contact us directly at tech@onemarketc.com',
+      error: `An unexpected error occurred${errorDetails}. Please try again later or contact us directly at tech@onemarketc.com`,
     };
   }
 }

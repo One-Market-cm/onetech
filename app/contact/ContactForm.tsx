@@ -22,10 +22,23 @@ export function ContactForm() {
         setMessage({ type: 'success', text: result.message! });
         event.currentTarget.reset();
       } else {
+        // Display the specific error message from the server
+        console.error('[Contact Form] Server error:', result.error);
         setMessage({ type: 'error', text: result.error! });
       }
     } catch (error) {
-      setMessage({ type: 'error', text: 'An error occurred. Please try again later.' });
+      // Log the error details for debugging
+      console.error('[Contact Form] Client-side error occurred');
+      console.error('[Contact Form] Error type:', error instanceof Error ? error.constructor.name : typeof error);
+      console.error('[Contact Form] Error message:', error instanceof Error ? error.message : String(error));
+      console.error('[Contact Form] Stack trace:', error instanceof Error ? error.stack : 'N/A');
+      
+      // Provide a more helpful error message
+      const errorMessage = error instanceof Error 
+        ? `Network error: ${error.message}. Please check your connection and try again.`
+        : 'An error occurred. Please try again later.';
+      
+      setMessage({ type: 'error', text: errorMessage });
     } finally {
       setIsSubmitting(false);
     }
