@@ -2,8 +2,6 @@
 
 import { Resend } from 'resend';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-
 export async function submitContactForm(formData: FormData) {
   // Simulate form processing
   const name = formData.get('name');
@@ -37,6 +35,9 @@ export async function submitContactForm(formData: FormData) {
       error: 'Email service is not configured. Please contact us directly at tech@onemarketc.com',
     };
   }
+
+  // Initialize Resend with API key (done at runtime to ensure env var is available)
+  const resend = new Resend(process.env.RESEND_API_KEY);
 
   // Helper function to escape HTML to prevent XSS
   const escapeHtml = (text: string) => {
