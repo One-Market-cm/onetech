@@ -33,12 +33,11 @@ export function ContactForm() {
       console.error('[Contact Form] Error message:', error instanceof Error ? error.message : String(error));
       console.error('[Contact Form] Stack trace:', error instanceof Error ? error.stack : 'N/A');
       
-      // Provide a more helpful error message
-      const errorMessage = error instanceof Error 
-        ? `Network error: ${error.message}. Please check your connection and try again.`
-        : 'An error occurred. Please try again later.';
-      
-      setMessage({ type: 'error', text: errorMessage });
+      // Provide a user-friendly error message without exposing internal details
+      setMessage({ 
+        type: 'error', 
+        text: 'Unable to submit the form. Please check your internet connection and try again.' 
+      });
     } finally {
       setIsSubmitting(false);
     }

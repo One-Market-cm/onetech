@@ -3,6 +3,9 @@
 import { Resend } from 'resend';
 
 export async function submitContactForm(formData: FormData) {
+  // Check if running in development mode for detailed error messages
+  const isDevelopment = process.env.NODE_ENV === 'development';
+  
   // Simulate form processing
   const name = formData.get('name');
   const email = formData.get('email');
@@ -106,7 +109,6 @@ Timestamp: ${timestamp}
       console.error('[Contact Form] Full error details:', JSON.stringify(error, null, 2));
       
       // Provide more specific error message in development
-      const isDevelopment = process.env.NODE_ENV === 'development';
       const errorDetails = isDevelopment ? ` (${error.message})` : '';
       
       return {
@@ -129,7 +131,6 @@ Timestamp: ${timestamp}
     console.error('[Contact Form] Stack trace:', error instanceof Error ? error.stack : 'N/A');
     
     // Provide more specific error message in development
-    const isDevelopment = process.env.NODE_ENV === 'development';
     const errorDetails = isDevelopment && error instanceof Error ? ` (${error.message})` : '';
     
     return {
