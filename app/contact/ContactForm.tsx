@@ -22,9 +22,9 @@ export function ContactForm() {
       console.log('Received result from server action:', result);
 
       // Validate that we received a proper response
-      if (!result || typeof result !== 'object') {
+      if (! result || typeof result !== 'object') {
         console.error('Invalid response format:', result);
-        setMessage({ type: 'error', text: 'An error occurred. Please try again later.' });
+        setMessage({ type: 'error', text: 'An error occurred.  Please try again later.' });
         return;
       }
 
@@ -34,21 +34,14 @@ export function ContactForm() {
         event.currentTarget.reset();
       } else {
         console.log('Form submission failed:', result.error);
-        setMessage({ type: 'error', text: result.error || 'An error occurred. Please try again later.' });
-      }
-    } catch (error) {
-      console.error('Error caught in handleSubmit:', error);
-      setMessage({ type: 'error', text: 'An error occurred. Please try again later.' });
-        // Display the specific error message from the server
-        console.error('[Contact Form] Server error:', result.error);
-        setMessage({ type: 'error', text: result.error! });
+        setMessage({ type:  'error', text: result. error || 'An error occurred. Please try again later.' });
       }
     } catch (error) {
       // Log the error details for debugging
       console.error('[Contact Form] Client-side error occurred');
       console.error('[Contact Form] Error type:', error instanceof Error ? error.constructor.name : typeof error);
       console.error('[Contact Form] Error message:', error instanceof Error ? error.message : String(error));
-      console.error('[Contact Form] Stack trace:', error instanceof Error ? error.stack : 'N/A');
+      console.error('[Contact Form] Stack trace:', error instanceof Error ? error. stack : 'N/A');
       
       // Provide a user-friendly error message without exposing internal details
       setMessage({ 
@@ -70,11 +63,11 @@ export function ContactForm() {
               : 'bg-red-50 dark:bg-red-900/20 text-red-800 dark:text-red-200 border border-red-200 dark:border-red-800'
           }`}
         >
-          {message.text}
+          {message. text}
         </div>
       )}
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 md: grid-cols-2 gap-6">
         <div>
           <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
             Name <span className="text-red-500">*</span>
@@ -84,7 +77,7 @@ export function ContactForm() {
             id="name"
             name="name"
             required
-            className="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-primary-600 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100"
+            className="w-full px-4 py-2 border border-gray-300 dark: border-gray-700 rounded-lg focus:ring-2 focus:ring-primary-600 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100"
           />
         </div>
 
@@ -97,7 +90,7 @@ export function ContactForm() {
             id="email"
             name="email"
             required
-            className="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-primary-600 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100"
+            className="w-full px-4 py-2 border border-gray-300 dark: border-gray-700 rounded-lg focus:ring-2 focus:ring-primary-600 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100"
           />
         </div>
       </div>
@@ -145,7 +138,7 @@ export function ContactForm() {
           name="message"
           required
           rows={6}
-          className="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-primary-600 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100"
+          className="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg focus: ring-2 focus:ring-primary-600 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100"
         />
       </div>
 
