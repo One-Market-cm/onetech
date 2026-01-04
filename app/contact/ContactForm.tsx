@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { submitContactForm } from './actions';
+import { submitContactForm, type ContactFormResponse } from './actions';
 import { Button } from '@/components/ui/Button';
 
 export function ContactForm() {
@@ -16,12 +16,29 @@ export function ContactForm() {
     const formData = new FormData(event.currentTarget);
 
     try {
+      console.log('Submitting contact form...');
       const result = await submitContactForm(formData);
+      
+      console.log('Received result from server action:', result);
+
+      // Validate that we received a proper response
+      if (!result || typeof result !== 'object') {
+        console.error('Invalid response format:', result);
+        setMessage({ type: 'error', text: 'An error occurred. Please try again later.' });
+        return;
+      }
 
       if (result.success) {
-        setMessage({ type: 'success', text: result.message! });
+        console.log('Form submission successful');
+        setMessage({ type: 'success', text: result.message || 'Message sent successfully!' });
         event.currentTarget.reset();
       } else {
+        console.log('Form submission failed:', result.error);
+        setMessage({ type: 'error', text: result.error || 'An error occurred. Please try again later.' });
+      }
+    } catch (error) {
+      console.error('Error caught in handleSubmit:', error);
+      setMessage({ type: 'error', text: 'An error occurred. Please try again later.' });
         // Display the specific error message from the server
         console.error('[Contact Form] Server error:', result.error);
         setMessage({ type: 'error', text: result.error! });

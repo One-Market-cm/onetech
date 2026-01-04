@@ -2,6 +2,14 @@
 
 import { Resend } from 'resend';
 
+// Define the response type for type safety
+export type ContactFormResponse = {
+  success: boolean;
+  message?: string;
+  error?: string;
+};
+
+export async function submitContactForm(formData: FormData): Promise<ContactFormResponse> {
 // Cache development mode flag to avoid repeated environment variable access
 const isDevelopment = process.env.NODE_ENV === 'development';
 
@@ -146,9 +154,11 @@ Timestamp: ${timestamp}
       };
     }
 
+    console.log('Email sent successfully with ID:', data?.id);
     console.log('[Contact Form] Email sent successfully');
     console.log('[Contact Form] Email ID:', data?.id);
 
+    // Return success response immediately
     return {
       success: true,
       message: 'Thank you for contacting us! We will get back to you within 24 hours.',
