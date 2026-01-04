@@ -62,12 +62,20 @@ npm install
 cp .env.example .env.local
 ```
 
-4. Run the development server:
+4. Configure email service (required for contact form):
+   - Sign up for a free account at [Resend](https://resend.com)
+   - Get your API key from [Resend API Keys](https://resend.com/api-keys)
+   - Add the API key to `.env.local`:
+   ```bash
+   RESEND_API_KEY=re_your_api_key_here
+   ```
+
+5. Run the development server:
 ```bash
 npm run dev
 ```
 
-5. Open [http://localhost:3000](http://localhost:3000) in your browser
+6. Open [http://localhost:3000](http://localhost:3000) in your browser
 
 ## 📦 Scripts
 
@@ -128,9 +136,12 @@ The site can be deployed to any platform that supports Next.js:
 
 ## 📝 Environment Variables
 
-See `.env.example` for optional environment variables. The site works without any environment variables but you can configure:
+See `.env.example` for required and optional environment variables.
 
-- **Email notifications** for contact form
+### Required
+- **RESEND_API_KEY**: API key from [Resend](https://resend.com) for contact form email functionality
+
+### Optional
 - **Analytics** (Google Analytics, etc.)
 - **CMS integration** for dynamic content
 
