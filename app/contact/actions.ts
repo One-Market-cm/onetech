@@ -27,7 +27,12 @@ function logErrorDetails(error: unknown, prefix: string): void {
     
     // Only format error details in development to avoid unnecessary processing
     if (isDevelopment) {
-      console.error(`${prefix} Full error details:`, JSON.stringify(error, null, 2));
+      try {
+        console.error(`${prefix} Full error details:`, JSON.stringify(error, null, 2));
+      } catch {
+        // If JSON.stringify fails (e.g., circular references), log the error object directly
+        console.error(`${prefix} Full error details:`, error);
+      }
     }
   }
 }
@@ -130,7 +135,7 @@ Timestamp: ${timestamp}
     });
 
     if (error) {
-      logErrorDetails(error, '[Contact Form] Resend API');
+      logErrorDetails(error, '[Contact Form]');
       
       // Provide more specific error message in development
       const errorDetails = isDevelopment ? ` (${getErrorMessage(error)})` : '';
