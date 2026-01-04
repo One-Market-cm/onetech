@@ -13,8 +13,8 @@ export default function ContactPage() {
     {
       icon: '📧',
       title: 'Email',
-      details: 'hello@onetech.cm',
-      link: 'mailto:hello@onetech.cm',
+      details: 'tech@onemarketc.com',
+      link: 'mailto:tecgh@onemarketc.com',
     },
     {
       icon: '📱',
