@@ -38,19 +38,37 @@ export async function submitContactForm(formData: FormData) {
     };
   }
 
+  // Helper function to escape HTML to prevent XSS
+  const escapeHtml = (text: string) => {
+    const map: { [key: string]: string } = {
+      '&': '&amp;',
+      '<': '&lt;',
+      '>': '&gt;',
+      '"': '&quot;',
+      "'": '&#039;',
+    };
+    return text.replace(/[&<>"']/g, (m) => map[m]);
+  };
+
   // Prepare email content
   const timestamp = new Date().toISOString();
+  const escapedName = escapeHtml(String(name));
+  const escapedEmail = escapeHtml(String(email));
+  const escapedCompany = company ? escapeHtml(String(company)) : null;
+  const escapedService = service ? escapeHtml(String(service)) : null;
+  const escapedMessage = escapeHtml(String(message)).replace(/\n/g, '<br>');
+
   const emailHtml = `
-    <h2>New Contact Form Submission</h2>
-    <p><strong>Name:</strong> ${name}</p>
-    <p><strong>Email:</strong> ${email}</p>
-    ${company ? `<p><strong>Company:</strong> ${company}</p>` : ''}
-    ${service ? `<p><strong>Service of Interest:</strong> ${service}</p>` : ''}
-    <p><strong>Message:</strong></p>
-    <p>${String(message).replace(/\n/g, '<br>')}</p>
-    <hr>
-    <p><strong>Timestamp:</strong> ${timestamp}</p>
-  `;
+<h2>New Contact Form Submission</h2>
+<p><strong>Name:</strong> ${escapedName}</p>
+<p><strong>Email:</strong> ${escapedEmail}</p>
+${escapedCompany ? `<p><strong>Company:</strong> ${escapedCompany}</p>` : ''}
+${escapedService ? `<p><strong>Service of Interest:</strong> ${escapedService}</p>` : ''}
+<p><strong>Message:</strong></p>
+<p>${escapedMessage}</p>
+<hr>
+<p><strong>Timestamp:</strong> ${timestamp}</p>
+`.trim();
 
   const emailText = `
 New Contact Form Submission
@@ -65,7 +83,7 @@ ${message}
 
 ---
 Timestamp: ${timestamp}
-  `;
+`.trim();
 
   try {
     // Send email using Resend
