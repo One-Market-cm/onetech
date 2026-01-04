@@ -2,6 +2,41 @@
 
 import { Resend } from 'resend';
 
+// Cache development mode flag to avoid repeated environment variable access
+const isDevelopment = process.env.NODE_ENV === 'development';
+
+// Helper function to safely extract error message from unknown error type
+function getErrorMessage(error: unknown): string {
+  if (typeof error === 'object' && error !== null && 'message' in error) {
+    return String(error.message);
+  }
+  return 'Unknown error';
+}
+
+// Helper function to safely log error properties
+function logErrorDetails(error: unknown, prefix: string): void {
+  console.error(`${prefix} error occurred`);
+  
+  if (typeof error === 'object' && error !== null) {
+    if ('name' in error) {
+      console.error(`${prefix} Error type:`, error.name);
+    }
+    if ('message' in error) {
+      console.error(`${prefix} Error message:`, error.message);
+    }
+    
+    // Only format error details in development to avoid unnecessary processing
+    if (isDevelopment) {
+      try {
+        console.error(`${prefix} Full error details:`, JSON.stringify(error, null, 2));
+      } catch {
+        // If JSON.stringify fails (e.g., circular references), log the error object directly
+        console.error(`${prefix} Full error details:`, error);
+      }
+    }
+  }
+}
+
 export async function submitContactForm(formData: FormData) {
   // Simulate form processing
   const name = formData.get('name');
@@ -30,7 +65,8 @@ export async function submitContactForm(formData: FormData) {
   // Check if API key is configured
   const apiKey = process.env.RESEND_API_KEY;
   if (!apiKey) {
-    console.error('RESEND_API_KEY is not configured');
+    console.error('[Contact Form] RESEND_API_KEY environment variable is not configured');
+    console.error('[Contact Form] Please set RESEND_API_KEY in your environment variables');
     return {
       success: false,
       error: 'Email service is not configured. Please contact us directly at tech@onemarketc.com',
@@ -99,24 +135,36 @@ Timestamp: ${timestamp}
     });
 
     if (error) {
-      console.error('Error sending email:', error);
+      logErrorDetails(error, '[Contact Form]');
+      
+      // Provide more specific error message in development
+      const errorDetails = isDevelopment ? ` (${getErrorMessage(error)})` : '';
+      
       return {
         success: false,
-        error: 'Failed to send message. Please try again or contact us directly at tech@onemarketc.com',
+        error: `Failed to send message${errorDetails}. Please try again or contact us directly at tech@onemarketc.com`,
       };
     }
 
-    console.log('Email sent successfully:', data);
+    console.log('[Contact Form] Email sent successfully');
+    console.log('[Contact Form] Email ID:', data?.id);
 
     return {
       success: true,
       message: 'Thank you for contacting us! We will get back to you within 24 hours.',
     };
   } catch (error) {
-    console.error('Unexpected error sending email:', error);
+    console.error('[Contact Form] Unexpected error occurred while sending email');
+    console.error('[Contact Form] Error type:', error instanceof Error ? error.constructor.name : typeof error);
+    console.error('[Contact Form] Error message:', error instanceof Error ? error.message : String(error));
+    console.error('[Contact Form] Stack trace:', error instanceof Error ? error.stack : 'N/A');
+    
+    // Provide more specific error message in development
+    const errorDetails = isDevelopment && error instanceof Error ? ` (${error.message})` : '';
+    
     return {
       success: false,
-      error: 'An unexpected error occurred. Please try again later or contact us directly at tech@onemarketc.com',
+      error: `An unexpected error occurred${errorDetails}. Please try again later or contact us directly at tech@onemarketc.com`,
     };
   }
 }
