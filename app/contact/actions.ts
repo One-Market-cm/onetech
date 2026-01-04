@@ -2,10 +2,10 @@
 
 import { Resend } from 'resend';
 
+// Cache development mode flag to avoid repeated environment variable access
+const isDevelopment = process.env.NODE_ENV === 'development';
+
 export async function submitContactForm(formData: FormData) {
-  // Check if running in development mode for detailed error messages
-  const isDevelopment = process.env.NODE_ENV === 'development';
-  
   // Simulate form processing
   const name = formData.get('name');
   const email = formData.get('email');
@@ -106,7 +106,11 @@ Timestamp: ${timestamp}
       console.error('[Contact Form] Resend API error occurred');
       console.error('[Contact Form] Error type:', error.name);
       console.error('[Contact Form] Error message:', error.message);
-      console.error('[Contact Form] Full error details:', JSON.stringify(error, null, 2));
+      
+      // Only format error details in development to avoid unnecessary processing
+      if (isDevelopment) {
+        console.error('[Contact Form] Full error details:', JSON.stringify(error, null, 2));
+      }
       
       // Provide more specific error message in development
       const errorDetails = isDevelopment ? ` (${error.message})` : '';
