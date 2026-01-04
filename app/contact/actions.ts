@@ -2,7 +2,14 @@
 
 import { Resend } from 'resend';
 
-export async function submitContactForm(formData: FormData) {
+// Define the response type for type safety
+export type ContactFormResponse = {
+  success: boolean;
+  message?: string;
+  error?: string;
+};
+
+export async function submitContactForm(formData: FormData): Promise<ContactFormResponse> {
   // Simulate form processing
   const name = formData.get('name');
   const email = formData.get('email');
@@ -108,10 +115,14 @@ Timestamp: ${timestamp}
 
     console.log('Email sent successfully:', data);
 
-    return {
+    // Explicitly construct the response object to ensure proper serialization
+    const response: ContactFormResponse = {
       success: true,
       message: 'Thank you for contacting us! We will get back to you within 24 hours.',
     };
+    
+    console.log('Returning success response:', response);
+    return response;
   } catch (error) {
     console.error('Unexpected error sending email:', error);
     return {
