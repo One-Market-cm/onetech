@@ -113,16 +113,13 @@ Timestamp: ${timestamp}
       };
     }
 
-    console.log('Email sent successfully:', data);
+    console.log('Email sent successfully with ID:', data?.id);
 
-    // Explicitly construct the response object to ensure proper serialization
-    const response: ContactFormResponse = {
+    // Return success response immediately
+    return {
       success: true,
       message: 'Thank you for contacting us! We will get back to you within 24 hours.',
     };
-    
-    console.log('Returning success response:', response);
-    return response;
   } catch (error) {
     console.error('Unexpected error sending email:', error);
     return {
