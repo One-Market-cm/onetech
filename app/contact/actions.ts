@@ -9,7 +9,6 @@ export type ContactFormResponse = {
   error?: string;
 };
 
-export async function submitContactForm(formData: FormData): Promise<ContactFormResponse> {
 // Cache development mode flag to avoid repeated environment variable access
 const isDevelopment = process.env.NODE_ENV === 'development';
 
@@ -45,7 +44,7 @@ function logErrorDetails(error: unknown, prefix: string): void {
   }
 }
 
-export async function submitContactForm(formData: FormData) {
+export async function submitContactForm(formData: FormData): Promise<ContactFormResponse> {
   // Simulate form processing
   const name = formData.get('name');
   const email = formData.get('email');
